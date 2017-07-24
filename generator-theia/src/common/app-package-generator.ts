@@ -22,6 +22,7 @@ export class AppPackageGenerator extends AbstractGenerator {
         const dependendencies = this.isWeb() ? {} : {}
         const scripts = this.isWeb() ? {
             "start": "concurrently -n backend,frontend -c blue,green \"yarn run start:backend\" \"yarn run start:frontend\"",
+            "start:debug": "concurrently -n backend,frontend -c blue,green \"yarn run start:backend:debug\" \"yarn run start:frontend\"",
             "start:backend": "yarn run build:backend && node ./src-gen/backend/main.js | bunyan",
             "start:backend:debug": "yarn run build:backend && node ./src-gen/backend/main.js --loglevel=debug | bunyan",
             "start:frontend": "webpack-dev-server --open",
